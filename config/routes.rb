@@ -1,4 +1,6 @@
 CustodialSweeper::Application.routes.draw do
+  resources :histories
+
   resources :items
 
   resources :users
