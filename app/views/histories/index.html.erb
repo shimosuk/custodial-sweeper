@@ -1,5 +1,39 @@
-<h1>Listing histories</h1>
+<h1>お掃除当番システム</h1>
 
+<h2>お掃除やりたい人</h2>
+<table>
+  <tr>
+    <th>社員番号</th>
+    <th>名前</th>
+    <th></th>
+  </tr>
+
+<% @presence.each do |user| %>
+  <tr>
+    <td><%= user.user_id %></td>
+    <td><%= user.name %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+  </tr>
+<% end %>
+</table>
+
+<h2>お掃除できない人</h2>
+<table>
+  <tr>
+    <th>社員番号</th>
+    <th>名前</th>
+    <th></th>
+  </tr>
+
+<% @absence.each do |user| %>
+  <tr>
+    <td><%= user.user_id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.roll %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+  </tr>
+<% end %>
+</table>
 <table>
   <tr>
     <th>User</th>
@@ -15,9 +49,9 @@
     <td><%= history.user_id %></td>
     <td><%= history.item_id %></td>
     <td><%= history.cancel %></td>
-    <td><%= link_to 'Show', history %></td>
+    <!--<td><%= link_to 'Show', history %></td>-->
     <td><%= link_to 'Edit', edit_history_path(history) %></td>
-    <td><%= link_to 'Destroy', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <!--<td><%= link_to 'Destroy', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
   </tr>
 <% end %>
 </table>
