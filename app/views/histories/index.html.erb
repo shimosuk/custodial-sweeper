@@ -1,24 +1,59 @@
-<h1>Listing histories</h1>
+<h1>お掃除当番システム</h1>
 
+<h2>お掃除やりたい人</h2>
 <table>
   <tr>
-    <th>User</th>
-    <th>Item</th>
-    <th>Cancel</th>
+    <th>社員番号</th>
+    <th>名前</th>
     <th></th>
+  </tr>
+
+<% @presence.each do |user| %>
+  <tr>
+    <td><%= user.user_id %></td>
+    <td><%= user.name %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+  </tr>
+<% end %>
+</table>
+
+<h2>お掃除できない人</h2>
+<table>
+  <tr>
+    <th>社員番号</th>
+    <th>名前</th>
     <th></th>
+  </tr>
+
+<% @absence.each do |user| %>
+  <tr>
+    <td><%= user.user_id %></td>
+    <td><%= user.name %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+  </tr>
+<% end %>
+</table>
+
+<h2>今週の当番一覧</h2>
+<table>
+  <tr>
+    <th>社員番号</th>
+    <th>当番</th>
+    <th>開始日</th>
     <th></th>
   </tr>
 
 <% @histories.each do |history| %>
+<% @presence.where(:user_id => history.user_id).each do |user| %>
+<% Item.where(:item_id => 's').each do |item| %>
   <tr>
-    <td><%= history.user_id %></td>
-    <td><%= history.item_id %></td>
-    <td><%= history.cancel %></td>
-    <td><%= link_to 'Show', history %></td>
+    <td><%= user.name %></td>
+    <td><%= item.name %></td>
+    <td><%= history.created_at %></td>
     <td><%= link_to 'Edit', edit_history_path(history) %></td>
-    <td><%= link_to 'Destroy', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
+<% end %>
+<% end %>
 <% end %>
 </table>
 

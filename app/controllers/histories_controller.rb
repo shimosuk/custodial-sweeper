@@ -3,6 +3,8 @@ class HistoriesController < ApplicationController
   # GET /histories.json
   def index
     @histories = History.all
+    @presence = User.able
+    @absence = User.unable
 
     respond_to do |format|
       format.html # index.html.erb
