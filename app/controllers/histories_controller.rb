@@ -27,6 +27,8 @@ class HistoriesController < ApplicationController
   # GET /histories/new.json
   def new
     @history = History.new
+    @user = User.where(:roll => true).order("random()").first
+    @item = Item.all
 
     respond_to do |format|
       format.html # new.html.erb
