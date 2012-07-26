@@ -12,15 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br />
+    <%= f.label :user_id, '社員番号' %><br />
     <%= f.number_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, '名前' %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :roll %><br />
+    <%= f.label :roll, '清掃可否' %><br />
     <%= f.check_box :roll, {:checked => true} %>
   </div>
   <div class="actions">
