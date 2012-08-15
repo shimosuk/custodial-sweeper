@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @history.user_id %>
+  <b>掃除する人:</b>
+  <%= User.where(:user_id => @history.user_id).first.name %>
 </p>
 
 <p>
-  <b>Item:</b>
-  <%= @history.item_id %>
-</p>
-
-<p>
-  <b>Cancel:</b>
-  <%= @history.cancel %>
+  <b>掃除する場所:</b>
+  <%= Item.where(:item_id => @history.item_id).first.name %>
 </p>
 
 

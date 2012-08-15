@@ -40,17 +40,15 @@
     <th>社員番号</th>
     <th>当番</th>
     <th>開始日</th>
-    <th></th>
   </tr>
 
 <% @histories.each do |history| %>
 <% @presence.where(:user_id => history.user_id).each do |user| %>
-<% Item.where(:item_id => 's').each do |item| %>
+<% Item.where(:item_id => history.item_id).each do |item| %>
   <tr>
     <td><%= user.name %></td>
     <td><%= item.name %></td>
     <td><%= history.created_at %></td>
-    <td><%= link_to 'Edit', edit_history_path(history) %></td>
   </tr>
 <% end %>
 <% end %>
